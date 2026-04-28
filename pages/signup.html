@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+</head>
+
+<body class="signup-page">
+    <header>
+        <nav>
+            <div class="logo">Hire<strong style="font-family:'Pinyon Script';">able</strong></div>
+        </nav>
+    </header>
+    <div class="signup-container">
+        <h3 class="signup-heading">
+            <span class="role-copy employee-copy">Sign up to apply for Jobs</span>
+            <span class="role-copy employer-copy">Sign up to start posting jobs</span>
+        </h3>
+        <form>
+            <div class="field">
+                <label>I am here to</label>
+                <div class="role-toggle" role="radiogroup" aria-label="Account type">
+                    <input type="radio" id="role-employee" name="account-role" value="employee" checked>
+                    <label for="role-employee">Apply for Jobs</label>
+                    <input type="radio" id="role-employer" name="account-role" value="employer">
+                    <label for="role-employer">Post Jobs</label>
+                </div>
+            </div>
+            <div class="name-row">
+                <div class="field">
+                    <label for="first-name">First Name</label>
+                    <input id="first-name" type="text" required>
+                </div>
+                <div class="field">
+                    <label for="last-name">Last Name</label>
+                    <input id="last-name" type="text" required>
+                </div>
+            </div>
+            <div class="field">
+                <label for="email">
+                    <span class="role-copy employee-copy">Email</span>
+                    <span class="role-copy employer-copy">Work Email</span>
+                </label>
+                <input id="email" type="email" required>
+            </div>
+            <div class="field">
+                <label for="country">Country</label>
+                <select id="country" required>
+                    <option value="" disabled>Select country</option>
+                    <option value="Ethiopia" selected>Ethiopia</option>
+                    <option value="Kenya">Kenya</option>
+                    <option value="Rwanda">Rwanda</option>
+                    <option value="Uganda">Uganda</option>
+                    <option value="Tanzania">Tanzania</option>
+                    <option value="Nigeria">Nigeria</option>
+                    <option value="South Africa">South Africa</option>
+                    <option value="Ghana">Ghana</option>
+                    <option value="Egypt">Egypt</option>
+                </select>
+            </div>
+            <div class="field">
+                <label for="password">Password</label>
+                <input id="password" type="password" minlength="8" required>
+            </div>
+            <div class="row">
+            <input type="checkbox" id="terms" required>
+            <label for="terms" class="terms-label">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+            </div>
+            <button type="submit">Create my account</button>
+            <div class="or-divider"><span>or</span></div>
+            <div class="social-row">
+                <a href="#" class="google-btn"><iconify-icon icon="logos:google-icon"></iconify-icon></a>
+                <a href="#" class="linkedin-btn"><iconify-icon icon="logos:linkedin-icon"></iconify-icon></a>
+            </div>
+        </form>
+        <p>Already have an account? <a href="pages/login.html">Login</a></p>
+    </div>
+</body>
+</html>
