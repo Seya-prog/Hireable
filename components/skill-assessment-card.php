@@ -28,5 +28,5 @@
             <span class="material-symbols-outlined">bar_chart</span> <?= $level ?>
         </div>
     </div>
-    <button class="skill-start-btn">Start Assessment</button>
+    <a href="take-assessment.php" class="skill-start-btn" style="text-decoration: none; text-align: center; display: block;">Start Assessment</a>
 </div>

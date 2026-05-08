@@ -14,13 +14,13 @@
             <div class="profile-topbar-left">
                 <span class="profile-topbar-brand">Hireable</span>
                 <nav class="profile-topbar-nav">
-                    <a href="#">Directorships</a>
-                    <a href="#">Board Roles</a>
-                    <a href="#">Advisory</a>
+                    <a href="job-search.php">Directorships</a>
+                    <a href="job-search.php">Board Roles</a>
+                    <a href="job-search.php">Advisory</a>
                 </nav>
             </div>
             <div class="profile-topbar-right">
-                <a class="profile-find-jobs-btn" href="applications.php">Find Jobs</a>
+                <a class="profile-find-jobs-btn" href="job-search.php">Find Jobs</a>
                 <div class="profile-topbar-icons">
                     <span class="material-symbols-outlined profile-topbar-icon">notifications</span>
                     <span class="material-symbols-outlined profile-topbar-icon">mail</span>

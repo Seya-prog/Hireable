@@ -15,10 +15,10 @@
                 <h2 class="page-title">Application Tracker</h2>
                 <p class="page-subtitle">Curating your executive career journey.</p>
             </div>
-            <button class="app-new-btn">
+            <a href="job-search.php" class="app-new-btn" style="text-decoration: none;">
                 <span class="material-symbols-outlined">add</span>
                 New Application
-            </button>
+            </a>
         </div>
 
         <!-- Status Summary Bar -->
@@ -114,7 +114,7 @@
                         include __DIR__ . '/../components/app-task-item.php';
                         ?>
                     </div>
-                    <button class="app-view-all-btn">View All Tasks</button>
+                    <a href="#" class="app-view-all-btn" style="text-decoration: none;">View All Tasks</a>
                 </section>
 
                 <!-- Market Insights -->
@@ -122,7 +122,7 @@
                     <div class="app-insights-content">
                         <h4 class="app-insights-title">Market Insights</h4>
                         <p class="app-insights-text">Your profile is trending 24% higher than similar executive candidates this week.</p>
-                        <a class="app-insights-link" href="#">Read Full Report</a>
+                        <a class="app-insights-link" href="profile.php">View Profile Insights</a>
                     </div>
                     <div class="app-insights-icon">
                         <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">trending_up</span>

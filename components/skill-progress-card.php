@@ -50,8 +50,8 @@
                 <span class="material-symbols-outlined">bar_chart</span> <?= $level ?>
             </div>
         </div>
-        <button class="skill-resume-btn">
+        <a href="take-assessment.php" class="skill-resume-btn" style="text-decoration: none;">
             Resume Test <span class="material-symbols-outlined">arrow_forward</span>
-        </button>
+        </a>
     </div>
 </div>

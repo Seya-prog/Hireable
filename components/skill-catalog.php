@@ -14,20 +14,20 @@
         </div>
     </div>
     <div class="catalog-grid">
-        <div class="catalog-item">
+        <a href="take-assessment.php" class="catalog-item" style="text-decoration: none; color: inherit;">
             <h6 class="catalog-item-title">Interaction Design</h6>
             <p class="catalog-item-meta">30 Mins • Level 2</p>
-            <a class="catalog-item-link" href="#">Details <span class="material-symbols-outlined">open_in_new</span></a>
-        </div>
-        <div class="catalog-item">
+            <span class="catalog-item-link">Details <span class="material-symbols-outlined">open_in_new</span></span>
+        </a>
+        <a href="take-assessment.php" class="catalog-item" style="text-decoration: none; color: inherit;">
             <h6 class="catalog-item-title">Visual Hierarchy</h6>
             <p class="catalog-item-meta">20 Mins • Level 1</p>
-            <a class="catalog-item-link" href="#">Details <span class="material-symbols-outlined">open_in_new</span></a>
-        </div>
-        <div class="catalog-item">
+            <span class="catalog-item-link">Details <span class="material-symbols-outlined">open_in_new</span></span>
+        </a>
+        <a href="take-assessment.php" class="catalog-item" style="text-decoration: none; color: inherit;">
             <h6 class="catalog-item-title">UI Typography</h6>
             <p class="catalog-item-meta">25 Mins • Level 2</p>
-            <a class="catalog-item-link" href="#">Details <span class="material-symbols-outlined">open_in_new</span></a>
-        </div>
+            <span class="catalog-item-link">Details <span class="material-symbols-outlined">open_in_new</span></span>
+        </a>
     </div>
 </section>

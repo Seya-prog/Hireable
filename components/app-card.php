@@ -12,7 +12,7 @@
  * $nextStep   - Next step text
  */
 ?>
-<div class="app-card">
+<a href="application-detail.php" class="app-card" style="text-decoration: none; color: inherit;">
     <div class="app-card-left">
         <div class="app-card-logo">
             <img src="<?= $logo ?>" alt="<?= $company ?> logo">
@@ -31,6 +31,6 @@
             <span class="app-badge app-badge--<?= $statusType ?>"><?= $status ?></span>
             <p class="app-card-next">Next: <span><?= $nextStep ?></span></p>
         </div>
-        <button class="app-more-btn material-symbols-outlined">more_vert</button>
+        <span class="app-more-btn material-symbols-outlined">chevron_right</span>
     </div>
-</div>
+</a>
