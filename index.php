@@ -13,10 +13,10 @@
         <nav>
             <div class="logo">Hire<strong style="font-family:'Pinyon Script';">able</strong></div>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="pages/applications.html">Jobs</a></li>
-                <li><a href="pages/signup.html">Sign Up</a></li>
-                <li><a href="pages/Dashboard.html">Login</a></li>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="pages/applications.php">Jobs</a></li>
+                <li><a href="pages/signup.php">Sign Up</a></li>
+                <li><a href="pages/login.php">Login</a></li>
             </ul>
         </nav>
     </header>
@@ -25,8 +25,8 @@
         <p>Get hired by top companies. Build your profile, share your work, and connect with employers. Join our
             community of talented professionals and take your career to the next level.</p>
         <p>
-            <a href="pages/signup.html">Sign Up Now</a>
-            <a href="pages/profile.html">Explore jobs</a>
+            <a href="pages/signup.php">Sign Up Now</a>
+            <a href="pages/profile.php">Explore jobs</a>
         </p>
         <img src="assets/images/hero.jpg" alt="Hero image" id="hero-image">
     </div>
