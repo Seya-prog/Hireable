@@ -1,0 +1,355 @@
+﻿/* ===== PROFILE PAGE ===== */
+
+/* Top App Bar */
+.profile-topbar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 260px;
+  height: 4rem;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 40;
+  background: rgba(255, 249, 235, 0.8);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(208, 197, 187, 0.2);
+}
+
+.profile-topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.profile-topbar-brand {
+  font-family: 'Newsreader', serif;
+  font-size: 1.5rem;
+  color: #170f07;
+}
+
+.profile-topbar-nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.profile-topbar-nav a {
+  color: #4d453f;
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.profile-topbar-nav a:hover {
+  color: #170f07;
+}
+
+.profile-topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.profile-find-jobs-btn {
+  padding: 0.5rem 1.25rem;
+  background: #170f07;
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: opacity 0.2s;
+}
+
+.profile-find-jobs-btn:hover {
+  opacity: 0.9;
+}
+
+.profile-topbar-icons {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.profile-topbar-icon {
+  color: #4d453f;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.profile-topbar-icon:hover {
+  color: #170f07;
+}
+
+.profile-topbar-avatar {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid rgba(208, 197, 187, 0.15);
+}
+
+.profile-topbar-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Profile Canvas */
+.profile-canvas {
+  padding-top: 6rem;
+  padding-bottom: 5rem;
+  max-width: 64rem;
+}
+
+.profile-canvas-header {
+  margin-bottom: 4rem;
+  text-align: left;
+}
+
+.profile-canvas-header .page-subtitle {
+  max-width: 36rem;
+}
+
+.profile-canvas-title {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 2.25rem;
+  text-align: left;
+  display: block;
+  width: 100%;
+}
+
+/* Form Sections */
+.profile-form-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+
+.profile-section {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 2rem;
+}
+
+.profile-section-label {
+  padding-right: 2rem;
+}
+
+.profile-section-title {
+  font-family: 'Newsreader', serif;
+  font-size: 1.25rem;
+  color: #170f07;
+  margin: 0;
+}
+
+.profile-section-desc {
+  font-size: 0.875rem;
+  color: #4d453f;
+  margin: 0.5rem 0 0;
+  line-height: 1.5;
+}
+
+.profile-section-fields {
+  min-width: 0;
+}
+
+/* Fields */
+.profile-field-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.profile-field-group {
+  margin-bottom: 1rem;
+}
+
+.profile-field-label {
+  display: block;
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #7e766e;
+  margin-bottom: 0.25rem;
+  transition: color 0.2s;
+}
+
+.profile-field-group:focus-within .profile-field-label {
+  color: #170f07;
+}
+
+.profile-field-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #d0c5bb;
+  padding: 0.75rem 0;
+  font-size: 0.9375rem;
+  color: #1e1c10;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 500;
+  outline: none;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.profile-field-input:focus {
+  border-bottom-color: #170f07;
+}
+
+.profile-field-input--bold {
+  color: #170f07;
+  font-weight: 700;
+  font-family: 'Newsreader', serif;
+}
+
+.profile-field-select {
+  cursor: pointer;
+  appearance: auto;
+}
+
+.profile-textarea {
+  width: 100%;
+  background: #faf3e0;
+  border: 1px solid rgba(208, 197, 187, 0.3);
+  border-radius: 4px;
+  padding: 1rem;
+  font-size: 0.9375rem;
+  color: #1e1c10;
+  font-family: 'Manrope', sans-serif;
+  line-height: 1.6;
+  resize: none;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.profile-textarea:focus {
+  border-color: #170f07;
+  box-shadow: 0 0 0 3px rgba(23, 15, 7, 0.06);
+}
+
+.profile-field-textarea {
+  border: none;
+  border-bottom: 1px solid rgba(208, 197, 187, 0.5);
+  padding: 0.5rem 0;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  resize: none;
+}
+
+/* Experience cards */
+.profile-experience-list {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.profile-exp-card {
+  padding: 2rem;
+  border-radius: 4px;
+  border-left: 4px solid transparent;
+}
+
+.profile-exp-card--primary {
+  background: #faf3e0;
+  border-left-color: #170f07;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+.profile-exp-card--secondary {
+  background: #f4eedb;
+  border-left-color: #d0c5bb;
+}
+
+/* Add / Remove buttons */
+.profile-add-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  color: #170f07;
+  font-size: 0.875rem;
+  font-weight: 600;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: gap 0.2s;
+}
+
+.profile-add-btn:hover {
+  gap: 0.75rem;
+}
+
+.profile-add-btn .material-symbols-outlined {
+  font-size: 0.875rem;
+}
+
+.profile-remove-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: #7e766e;
+  font-size: 0.75rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s;
+  margin-top: 1rem;
+}
+
+.profile-remove-btn:hover {
+  color: #ba1a1a;
+}
+
+.profile-remove-btn .material-symbols-outlined {
+  font-size: 0.75rem;
+}
+
+/* Footer actions */
+.profile-form-actions {
+  padding-top: 3rem;
+  border-top: 1px solid rgba(208, 197, 187, 0.3);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.profile-discard-btn {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #4d453f;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.profile-discard-btn:hover {
+  color: #170f07;
+}
+
+.profile-save-btn {
+  padding: 1rem 2.5rem;
+  background: #170f07;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+.profile-save-btn:active {
+  transform: scale(0.98);
+}

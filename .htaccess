@@ -1,0 +1,11 @@
+RewriteEngine On
+
+# Don't rewrite real files and directories (CSS, JS, images, PHP pages)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Route form actions: /action/employer.jobs.create → core/Router.php
+RewriteRule ^action/(.*)$ core/Router.php?action=$1 [QSA,L]
+
+# Route API calls: /api/jobs/search → core/Api.php
+RewriteRule ^api/(.*)$ core/Api.php?endpoint=$1 [QSA,L]

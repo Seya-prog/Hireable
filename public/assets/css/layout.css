@@ -1,0 +1,177 @@
+﻿/* ===== PROFILE PAGE ===== */
+.profile-page {
+  display: flex;
+  min-height: 100vh;
+  height: auto;
+  background: rgb(255, 249, 237);
+  overflow: visible;
+}
+
+/* ===== DASHBOARD SIDEBAR ===== */
+.dash-sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 260px;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 0;
+  background: #2D241A;
+  z-index: 50;
+  box-shadow: 12px 0 32px rgba(30, 28, 16, 0.06);
+  overflow-y: auto;
+}
+
+.dash-sidebar-brand {
+  padding: 0 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.dash-sidebar-title {
+  font-family: 'Newsreader', serif;
+  font-style: italic;
+  font-size: 1.25rem;
+  color: #EFDEC0;
+  margin: 0;
+  font-weight: 400;
+}
+
+.dash-sidebar-subtitle {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 500;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #D0C5BB;
+  margin: 0.25rem 0 0;
+}
+
+.dash-sidebar-nav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.dash-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  margin: 0 0.5rem;
+  border-radius: 9999px;
+  color: #D0C5BB;
+  text-decoration: none;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 500;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.dash-nav-link .material-symbols-outlined {
+  font-size: 1.25rem;
+}
+
+.dash-nav-link:hover {
+  background: #4D453F;
+  color: #FFF9EB;
+}
+
+.dash-nav-link.active {
+  background: #EFDEC0;
+  color: #6D614A;
+  transform: scale(0.95);
+}
+
+.dash-nav-link.active:active {
+  transform: scale(0.9);
+}
+
+.dash-sidebar-upgrade {
+  padding: 0 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.dash-upgrade-btn {
+  width: 100%;
+  background: #EFDEC0;
+  color: #6D614A;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 0.75rem;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.dash-upgrade-btn:hover {
+  opacity: 0.9;
+}
+
+.dash-sidebar-footer {
+  border-top: 1px solid #4D453F;
+  padding-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.dash-footer-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  margin: 0 0.5rem;
+  color: #D0C5BB;
+  text-decoration: none;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 500;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: color 0.2s ease;
+}
+
+.dash-footer-link .material-symbols-outlined {
+  font-size: 1.25rem;
+}
+
+.dash-footer-link:hover {
+  color: #FFF9EB;
+}
+
+/* Dashboard page base layout */
+.dash-page {
+  min-height: 100vh;
+  font-family: 'Manrope', sans-serif;
+  background: #fff9eb;
+  color: #1e1c10;
+}
+
+.dash-main {
+  margin-left: 260px;
+  padding: 3rem;
+}
+
+.signout-btn {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  padding: 0.52rem 0.75rem;
+  border-radius: 9px;
+  color: #f7efe3;
+  border: 1px solid rgba(241, 215, 160, 0.2);
+  background: rgba(241, 215, 160, 0.08);
+}
+
+.signout-btn:hover {
+  background: rgba(241, 215, 160, 0.16);
+  color: #f1d7a0;
+}
+

@@ -1,0 +1,10 @@
+RewriteEngine On
+
+# Serve static assets directly (css, js, images, uploads)
+RewriteRule ^assets/ - [L]
+
+# Route form POST actions → core/Router.php
+RewriteRule ^action/(.+)$ ../core/Router.php?action=$1 [QSA,L]
+
+# Route API/AJAX calls → core/Api.php
+RewriteRule ^api/(.+)$ ../core/Api.php?endpoint=$1 [QSA,L]
