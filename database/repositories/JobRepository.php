@@ -13,7 +13,7 @@ class JobRepository {
      * Search active jobs with optional filters
      */
     public function findActiveJobs(array $filters = []): array {
-        $sql = "SELECT j.*, u.first_name, u.last_name, u.company_name
+        $sql = "SELECT j.*, u.first_name, u.last_name, u.company_name, u.company_logo
                 FROM jobs j JOIN users u ON j.employer_id = u.id
                 WHERE j.status = 'active'";
         $params = [];
@@ -63,7 +63,7 @@ class JobRepository {
 
     public function findById(int $id): ?array {
         $stmt = $this->pdo->prepare(
-            'SELECT j.*, u.first_name, u.last_name, u.company_name
+            'SELECT j.*, u.first_name, u.last_name, u.company_name, u.company_logo, u.company_industry, u.company_size, u.company_website, u.company_location
              FROM jobs j JOIN users u ON j.employer_id = u.id
              WHERE j.id = ?'
         );

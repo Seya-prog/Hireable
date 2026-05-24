@@ -38,8 +38,21 @@
             <a href="../pages/auth/signup.php">Sign Up Now</a>
             <a href="../pages/auth/signup.php?role=employer">I'm Hiring</a>
         </p>
-        <img src="assets/images/hero.jpg" alt="Hero image" id="hero-image">
+        <img src="assets/images/hero.png" alt="Hero image" id="hero-image">
     </div>
+
+    <!-- ===== TRUSTED BY ===== -->
+    <section class="trusted-section">
+        <p class="trusted-label">Trusted by teams at</p>
+        <div class="trusted-logos">
+            <img src="https://logo.clearbit.com/google.com" alt="Google" title="Google">
+            <img src="https://logo.clearbit.com/microsoft.com" alt="Microsoft" title="Microsoft">
+            <img src="https://logo.clearbit.com/amazon.com" alt="Amazon" title="Amazon">
+            <img src="https://logo.clearbit.com/meta.com" alt="Meta" title="Meta">
+            <img src="https://logo.clearbit.com/spotify.com" alt="Spotify" title="Spotify">
+            <img src="https://logo.clearbit.com/shopify.com" alt="Shopify" title="Shopify">
+        </div>
+    </section>
 
     <!-- ===== FEATURES ===== -->
     <section id="features">
@@ -224,9 +237,14 @@
                 }
                 $posted = date('M j', strtotime($job['created_at']));
             ?>
-            <a href="../pages/employer/job-detail.php?id=<?= $job['id'] ?>" class="job-card">
+            <a href="../pages/employee/job-detail.php?id=<?= $job['id'] ?>" class="job-card">
                 <div class="job-card-top">
-                    <div class="job-company-avatar"><?= strtoupper(substr($job['company_name'] ?? 'C', 0, 1)) ?></div>
+                    <?php
+                        $companyDomain = strtolower(str_replace(' ', '', $job['company_name'] ?? 'company')) . '.com';
+                        $logoUrl = 'https://logo.clearbit.com/' . urlencode($companyDomain);
+                    ?>
+                    <img class="job-company-logo" src="<?= $logoUrl ?>" alt="<?= htmlspecialchars($job['company_name'] ?? '') ?>" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                    <div class="job-company-avatar" style="display:none"><?= strtoupper(substr($job['company_name'] ?? 'C', 0, 1)) ?></div>
                     <div>
                         <span class="job-company"><?= htmlspecialchars($job['company_name'] ?? '') ?></span>
                         <span class="job-location"><?= htmlspecialchars($job['location'] ?? 'Remote') ?></span>

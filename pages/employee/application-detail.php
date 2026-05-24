@@ -85,7 +85,7 @@ if ($job['salary_min'] && $job['salary_max']) {
 <html lang="en">
 <head>
     <?php $pageTitle = htmlspecialchars($job['title']) . ' | Hireable'; ?>
-    <?php $pageCss = ['applications.css', 'employee.css', 'toast.css'];
+    <?php $pageCss = ['applications.css', 'employee.css', 'employer.css', 'toast.css'];
     include __DIR__ . '/../../components/shared/head.php'; ?>
 </head>
 <body class="dash-page">

@@ -202,12 +202,45 @@ if ($currentStageIdx === false) $currentStageIdx = 0;
                     </div>
                 </section>
 
+                <?php if (!empty($appDetail['cover_letter'])): ?>
+                <section class="emp-detail-panel">
+                    <h4 class="emp-section-title emp-section-title--sm">Cover Letter</h4>
+                    <p style="font-size: 0.85rem; color: #4d453f; line-height: 1.7;"><?= nl2br(htmlspecialchars($appDetail['cover_letter'])) ?></p>
+                </section>
+                <?php endif; ?>
+
+                <section class="emp-detail-panel">
+                    <h4 class="emp-section-title emp-section-title--sm">Resume / CV</h4>
+                    <?php if (!empty($appDetail['resume_path'])): ?>
+                        <div style="display:flex; align-items:center; gap:0.75rem; padding:1rem; background:#f4eedb; border-radius:10px; flex-wrap:wrap;">
+                            <span class="material-symbols-outlined" style="font-size:2rem; color:#695d46;">description</span>
+                            <div style="flex:1; min-width:0;">
+                                <p style="margin:0; font-weight:600; font-size:0.85rem; color:#170f07; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;"><?= basename($appDetail['resume_path']) ?></p>
+                                <p style="margin:0.25rem 0 0; font-size:0.75rem; color:#7e766e;">Uploaded with application</p>
+                            </div>
+                            <a href="<?= htmlspecialchars($appDetail['resume_path']) ?>" download style="display:inline-flex; align-items:center; gap:0.35rem; padding:0.5rem 0.85rem; background:#170f07; color:#fff; border-radius:8px; font-size:0.7rem; font-weight:700; text-decoration:none; white-space:nowrap; flex-shrink:0;">
+                                <span class="material-symbols-outlined" style="font-size:0.95rem;">download</span> Download
+                            </a>
+                        </div>
+                    <?php elseif (!empty($candidate['resume_path'])): ?>
+                        <div style="display:flex; align-items:center; gap:0.75rem; padding:1rem; background:#f4eedb; border-radius:10px;">
+                            <span class="material-symbols-outlined" style="font-size:2rem; color:#695d46;">description</span>
+                            <div style="flex:1;">
+                                <p style="margin:0; font-weight:600; font-size:0.85rem; color:#170f07;"><?= basename($candidate['resume_path']) ?></p>
+                                <p style="margin:0.25rem 0 0; font-size:0.75rem; color:#7e766e;">From candidate profile</p>
+                            </div>
+                            <a href="<?= htmlspecialchars($candidate['resume_path']) ?>" class="emp-quick-btn" download style="margin:0; padding:0.5rem 1rem; font-size:0.75rem;">
+                                <span class="material-symbols-outlined" style="font-size:1rem;">download</span> Download
+                            </a>
+                        </div>
+                    <?php else: ?>
+                        <p style="color:#7a6b5a; font-size:0.85rem;">No resume uploaded.</p>
+                    <?php endif; ?>
+                </section>
+
                 <section class="emp-detail-panel">
                     <h4 class="emp-section-title emp-section-title--sm">Actions</h4>
                     <a href="../employer/interview-schedule.php?app_id=<?= $appId ?>" class="emp-quick-btn"><span class="material-symbols-outlined">calendar_month</span> Schedule Interview</a>
-                    <?php if (!empty($candidate['resume_path'])): ?>
-                    <a href="<?= htmlspecialchars($candidate['resume_path']) ?>" class="emp-quick-btn" download><span class="material-symbols-outlined">download</span> Download Resume</a>
-                    <?php endif; ?>
                 </section>
             </div>
         </div>

@@ -4,6 +4,7 @@ require_once __DIR__ . '/../../backend/helpers/csrf.php';
 require_once __DIR__ . '/../../config/database.php';
 require_once __DIR__ . '/../../config/app.php';
 require_once __DIR__ . '/../../database/repositories/AssessmentRepository.php';
+require_once __DIR__ . '/../../database/repositories/JobRepository.php';
 
 if (!isLoggedIn() || getCurrentUserRole() !== 'employer') {
     header('Location: ' . AUTH_URL . 'login.php');
@@ -12,14 +13,29 @@ if (!isLoggedIn() || getCurrentUserRole() !== 'employer') {
 
 $employerId = getCurrentUserId();
 $assessRepo = new AssessmentRepository($pdo);
+$jobRepo    = new JobRepository($pdo);
 $assessments = $assessRepo->findByEmployer($employerId);
+
+// Edit mode
+$isEdit = false;
+$job = null;
+$editId = intval($_GET['id'] ?? 0);
+if ($editId) {
+    $job = $jobRepo->findById($editId);
+    if ($job && $jobRepo->isOwner($editId, $employerId)) {
+        $isEdit = true;
+    } else {
+        header('Location: ../employer/jobs.php');
+        exit;
+    }
+}
 
 $flash = getFlash();
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <?php $pageTitle = 'Create Job | Hireable Employer'; ?>
+    <?php $pageTitle = ($isEdit ? 'Edit Job' : 'Create Job') . ' | Hireable Employer'; ?>
     <?php $pageCss = ['employer.css', 'toast.css'];
     include __DIR__ . '/../../components/shared/head.php'; ?>
 </head>
@@ -35,60 +51,56 @@ $flash = getFlash();
                     <span class="material-symbols-outlined">arrow_back</span>
                     Back to Job Postings
                 </a>
-                <h2 class="page-title">Create New Job</h2>
-                <p class="page-subtitle">Fill in the details to publish a new job posting.</p>
+                <h2 class="page-title"><?= $isEdit ? 'Edit Job Post' : 'Create New Job' ?></h2>
+                <p class="page-subtitle"><?= $isEdit ? 'Update the details of your job posting.' : 'Fill in the details to publish a new job posting.' ?></p>
             </div>
         </div>
 
-        <form class="emp-form" method="POST" action="/action/employer.jobs.create" id="job-form">
+        <form class="emp-form" method="POST" action="/action/<?= $isEdit ? 'employer.jobs.update' : 'employer.jobs.create' ?>" id="job-form">
             <?= csrfField() ?>
+            <?php if ($isEdit): ?><input type="hidden" name="job_id" value="<?= $editId ?>"><?php endif; ?>
             <!-- Basic Info -->
             <section class="emp-form-section">
                 <h3 class="emp-form-section-title">Basic Information</h3>
                 <div class="emp-form-grid">
                     <div class="assess-field assess-field--full">
                         <label class="assess-label">Job Title *</label>
-                        <input class="assess-input" type="text" name="title" placeholder="e.g. Senior Software Engineer" required>
+                        <input class="assess-input" type="text" name="title" placeholder="e.g. Senior Software Engineer" required value="<?= htmlspecialchars($job['title'] ?? '') ?>">
                     </div>
                     <div class="assess-field">
                         <label class="assess-label">Department</label>
                         <select class="assess-input assess-select" name="department">
                             <option value="">Select department...</option>
-                            <option>Engineering</option>
-                            <option>Product</option>
-                            <option>Marketing</option>
-                            <option>Design</option>
-                            <option>Operations</option>
-                            <option>Analytics</option>
-                            <option>Finance</option>
-                            <option>Human Resources</option>
+                            <?php $depts = ['Engineering','Product','Marketing','Design','Operations','Analytics','Finance','Human Resources']; foreach($depts as $d): ?>
+                            <option <?= ($job['department'] ?? '') === $d ? 'selected' : '' ?>><?= $d ?></option>
+                            <?php endforeach; ?>
                         </select>
                     </div>
                     <div class="assess-field">
                         <label class="assess-label">Location</label>
-                        <input class="assess-input" type="text" name="location" placeholder="e.g. Addis Ababa, Remote">
+                        <input class="assess-input" type="text" name="location" placeholder="e.g. Addis Ababa, Remote" value="<?= htmlspecialchars($job['location'] ?? '') ?>">
                     </div>
                     <div class="assess-field">
                         <label class="assess-label">Employment Type</label>
                         <select class="assess-input assess-select" name="job_type">
-                            <option value="full-time">Full-time</option>
-                            <option value="part-time">Part-time</option>
-                            <option value="contract">Contract</option>
-                            <option value="internship">Internship</option>
+                            <option value="full-time" <?= ($job['job_type'] ?? '') === 'full-time' ? 'selected' : '' ?>>Full-time</option>
+                            <option value="part-time" <?= ($job['job_type'] ?? '') === 'part-time' ? 'selected' : '' ?>>Part-time</option>
+                            <option value="contract" <?= ($job['job_type'] ?? '') === 'contract' ? 'selected' : '' ?>>Contract</option>
+                            <option value="internship" <?= ($job['job_type'] ?? '') === 'internship' ? 'selected' : '' ?>>Internship</option>
                         </select>
                     </div>
                     <div class="assess-field">
                         <label class="assess-label">Experience Level</label>
                         <select class="assess-input assess-select" name="experience_level">
-                            <option value="entry">Entry Level</option>
-                            <option value="mid">Mid Level</option>
-                            <option value="senior" selected>Senior Level</option>
-                            <option value="executive">Executive</option>
+                            <option value="entry" <?= ($job['experience_level'] ?? '') === 'entry' ? 'selected' : '' ?>>Entry Level</option>
+                            <option value="mid" <?= ($job['experience_level'] ?? '') === 'mid' ? 'selected' : '' ?>>Mid Level</option>
+                            <option value="senior" <?= (!$isEdit || ($job['experience_level'] ?? '') === 'senior') ? 'selected' : '' ?>>Senior Level</option>
+                            <option value="executive" <?= ($job['experience_level'] ?? '') === 'executive' ? 'selected' : '' ?>>Executive</option>
                         </select>
                     </div>
                     <div class="assess-field">
                         <label class="assess-label">Application Deadline</label>
-                        <input class="assess-input" type="date" name="application_deadline">
+                        <input class="assess-input" type="date" name="application_deadline" value="<?= htmlspecialchars($job['application_deadline'] ?? '') ?>">
                     </div>
                 </div>
             </section>
@@ -99,11 +111,11 @@ $flash = getFlash();
                 <div class="emp-form-grid">
                     <div class="assess-field">
                         <label class="assess-label">Salary Min (USD)</label>
-                        <input class="assess-input" type="number" name="salary_min" placeholder="e.g. 80000">
+                        <input class="assess-input" type="number" name="salary_min" placeholder="e.g. 80000" value="<?= htmlspecialchars($job['salary_min'] ?? '') ?>">
                     </div>
                     <div class="assess-field">
                         <label class="assess-label">Salary Max (USD)</label>
-                        <input class="assess-input" type="number" name="salary_max" placeholder="e.g. 120000">
+                        <input class="assess-input" type="number" name="salary_max" placeholder="e.g. 120000" value="<?= htmlspecialchars($job['salary_max'] ?? '') ?>">
                     </div>
                 </div>
             </section>
@@ -113,19 +125,19 @@ $flash = getFlash();
                 <h3 class="emp-form-section-title">Job Description</h3>
                 <div class="assess-field">
                     <label class="assess-label">Description *</label>
-                    <textarea class="assess-textarea" rows="6" name="description" placeholder="Describe the role, responsibilities, and what a typical day looks like..." required></textarea>
+                    <textarea class="assess-textarea" rows="6" name="description" placeholder="Describe the role, responsibilities, and what a typical day looks like..." required><?= htmlspecialchars($job['description'] ?? '') ?></textarea>
                 </div>
                 <div class="assess-field" style="margin-top: 1.25rem;">
                     <label class="assess-label">Requirements</label>
-                    <textarea class="assess-textarea" rows="5" name="requirements" placeholder="List the required qualifications, skills, and experience..."></textarea>
+                    <textarea class="assess-textarea" rows="5" name="requirements" placeholder="List the required qualifications, skills, and experience..."><?= htmlspecialchars($job['requirements'] ?? '') ?></textarea>
                 </div>
                 <div class="assess-field" style="margin-top: 1.25rem;">
                     <label class="assess-label">Responsibilities</label>
-                    <textarea class="assess-textarea" rows="5" name="responsibilities" placeholder="Outline the key responsibilities of this role..."></textarea>
+                    <textarea class="assess-textarea" rows="5" name="responsibilities" placeholder="Outline the key responsibilities of this role..."><?= htmlspecialchars($job['responsibilities'] ?? '') ?></textarea>
                 </div>
                 <div class="assess-field" style="margin-top: 1.25rem;">
                     <label class="assess-label">Benefits</label>
-                    <textarea class="assess-textarea" rows="4" name="benefits" placeholder="Health insurance, stock options, flexible hours, etc."></textarea>
+                    <textarea class="assess-textarea" rows="4" name="benefits" placeholder="Health insurance, stock options, flexible hours, etc."><?= htmlspecialchars($job['benefits'] ?? '') ?></textarea>
                 </div>
             </section>
 
@@ -134,8 +146,8 @@ $flash = getFlash();
                 <h3 class="emp-form-section-title">Required Skills</h3>
                 <div class="emp-skills-input-wrap">
                     <input class="assess-input" type="text" placeholder="Type a skill and press Enter..." id="skill-input">
-                    <input type="hidden" name="skills_required" id="skills-hidden" value="">
-                    <div class="emp-skills-tags" id="skills-list"></div>
+                    <input type="hidden" name="skills_required" id="skills-hidden" value="<?= htmlspecialchars($job['skills_required'] ?? '') ?>">
+                    <div class="emp-skills-tags" id="skills-list"><?php if ($isEdit && !empty($job['skills_required'])): foreach(array_map('trim', explode(',', $job['skills_required'])) as $sk): ?><span class="emp-skill-tag"><?= htmlspecialchars($sk) ?> <button type="button" class="emp-skill-rm">&times;</button></span><?php endforeach; endif; ?></div>
                 </div>
             </section>
 
@@ -159,8 +171,8 @@ $flash = getFlash();
 
             <div class="emp-form-actions">
                 <a href="../employer/jobs.php" class="assess-save-btn assess-save-btn--draft">Cancel</a>
-                <button type="submit" class="assess-save-btn assess-save-btn--draft" id="btn-draft">Save as Draft</button>
-                <button type="submit" class="assess-save-btn assess-save-btn--publish" id="btn-publish">Publish Job</button>
+                <button type="submit" class="assess-save-btn assess-save-btn--draft" id="btn-draft"><?= $isEdit ? 'Save Draft' : 'Save as Draft' ?></button>
+                <button type="submit" class="assess-save-btn assess-save-btn--publish" id="btn-publish"><?= $isEdit ? 'Update & Publish' : 'Publish Job' ?></button>
             </div>
         </form>
     </main>

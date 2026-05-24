@@ -38,12 +38,15 @@ class ApplicationController {
         // Handle resume upload
         $resumePath = null;
         if (isset($_FILES['resume']) && $_FILES['resume']['error'] === UPLOAD_ERR_OK) {
-            $uploadDir = ROOT_DIR . '/assets/uploads/resumes/';
+            $uploadDir = ROOT_DIR . '/storage/resumes/';
             if (!is_dir($uploadDir)) mkdir($uploadDir, 0755, true);
-            $ext = pathinfo($_FILES['resume']['name'], PATHINFO_EXTENSION);
-            $filename = 'resume_' . $employeeId . '_' . $jobId . '_' . time() . '.' . $ext;
-            move_uploaded_file($_FILES['resume']['tmp_name'], $uploadDir . $filename);
-            $resumePath = 'assets/uploads/resumes/' . $filename;
+            $ext = strtolower(pathinfo($_FILES['resume']['name'], PATHINFO_EXTENSION));
+            $allowed = ['pdf', 'doc', 'docx'];
+            if (in_array($ext, $allowed)) {
+                $filename = 'resume_' . $employeeId . '_' . $jobId . '_' . time() . '.' . $ext;
+                move_uploaded_file($_FILES['resume']['tmp_name'], $uploadDir . $filename);
+                $resumePath = '/storage/resumes/' . $filename;
+            }
         }
 
         $this->apps->apply($jobId, $employeeId, [

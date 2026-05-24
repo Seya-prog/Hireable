@@ -12,7 +12,7 @@ class ApplicationRepository {
     public function findByEmployee(int $employeeId): array {
         $stmt = $this->pdo->prepare(
             'SELECT a.*, j.title AS job_title, j.location, j.job_type,
-                    u.company_name, u.first_name AS emp_first, u.last_name AS emp_last
+                    u.company_name, u.company_logo, u.first_name AS emp_first, u.last_name AS emp_last
              FROM applications a
              JOIN jobs j ON a.job_id = j.id
              JOIN users u ON j.employer_id = u.id
@@ -25,7 +25,8 @@ class ApplicationRepository {
 
     public function findByJob(int $jobId): array {
         $stmt = $this->pdo->prepare(
-            'SELECT a.*, u.first_name, u.last_name, u.email, u.headline, u.profile_photo
+            'SELECT a.*, u.first_name, u.last_name, u.email, u.headline, u.profile_photo,
+                    a.resume_path, a.cover_letter
              FROM applications a
              JOIN users u ON a.employee_id = u.id
              WHERE a.job_id = ?
@@ -50,7 +51,7 @@ class ApplicationRepository {
 
     public function findById(int $id): ?array {
         $stmt = $this->pdo->prepare(
-            'SELECT a.*, j.title AS job_title, u.first_name, u.last_name
+            'SELECT a.*, a.resume_path, a.cover_letter, j.title AS job_title, u.first_name, u.last_name
              FROM applications a
              JOIN jobs j ON a.job_id = j.id
              JOIN users u ON a.employee_id = u.id
@@ -156,7 +157,8 @@ class ApplicationRepository {
      */
     public function findDetailedByEmployer(int $employerId): array {
         $stmt = $this->pdo->prepare(
-            'SELECT a.*, j.title AS job_title, u.first_name, u.last_name, u.email,
+            'SELECT a.*, a.resume_path, a.cover_letter, j.title AS job_title,
+                    u.first_name, u.last_name, u.email,
                     u.headline, u.profile_photo, u.phone, u.city, u.country,
                     u.years_of_experience, u.linkedin_url, u.portfolio_url, u.github_url
              FROM applications a

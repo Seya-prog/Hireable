@@ -116,7 +116,7 @@ $locationFilter = $filters['location'];
                     }
                     $icons = ['apartment','rocket_launch','code','groups','business'];
                 ?>
-                <a href="application-detail.php?id=<?= $cj['id'] ?>" class="js-curated-card <?= $i === 0 ? 'js-curated-card--dark' : '' ?>">
+                <a href="job-detail.php?id=<?= $cj['id'] ?>" class="js-curated-card <?= $i === 0 ? 'js-curated-card--dark' : '' ?>">
                     <div class="js-curated-top">
                         <div class="js-curated-icon"><span class="material-symbols-outlined"><?= $icons[$i % 5] ?></span></div>
                         <div>
@@ -172,7 +172,7 @@ $locationFilter = $filters['location'];
                         $level = $levelMap[$job['experience_level']] ?? ucfirst($job['experience_level'] ?? '');
                         $typeLabel = ucfirst(str_replace('-', '-', $job['job_type'] ?? 'Full-time'));
                     ?>
-                    <a href="application-detail.php?id=<?= $job['id'] ?>" class="js-opp-row">
+                    <a href="job-detail.php?id=<?= $job['id'] ?>" class="js-opp-row">
                         <div class="js-opp-left">
                             <div class="js-opp-icon"><span class="material-symbols-outlined"><?= $icon ?></span></div>
                             <div>

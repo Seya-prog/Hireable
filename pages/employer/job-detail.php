@@ -59,7 +59,7 @@ $skillsList = !empty($job['skills_required']) ? array_map('trim', explode(',', $
                 <p class="page-subtitle"><?= htmlspecialchars($job['department'] ?? '') ?> • <?= htmlspecialchars($job['location'] ?? 'Remote') ?> • <?= ucfirst(str_replace('-',' ',$job['job_type'])) ?> • <?= ucfirst($job['experience_level']) ?> Level</p>
             </div>
             <div class="emp-header-actions">
-                <a href="../employer/assessment-edit.php?id=<?= $jobId ?>" class="assess-save-btn assess-save-btn--draft" style="text-decoration:none;">Edit Post</a>
+                <a href="../employer/job-create.php?id=<?= $jobId ?>" class="assess-save-btn assess-save-btn--draft" style="text-decoration:none;">Edit Post</a>
                 <span class="emp-status-badge emp-status--<?= $job['status'] ?>"><?= ucfirst($job['status']) ?></span>
             </div>
         </div>

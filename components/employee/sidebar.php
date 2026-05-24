@@ -35,7 +35,7 @@ $navItems = [
             <span class="material-symbols-outlined">help</span>
             <span>Help Center</span>
         </a>
-        <a class="dash-footer-link" href="/backend/auth/logout.php">
+        <a class="dash-footer-link" href="/action/auth.logout">
             <span class="material-symbols-outlined">logout</span>
             <span>Sign Out</span>
         </a>
