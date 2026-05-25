@@ -41,19 +41,6 @@
         <img src="assets/images/hero.png" alt="Hero image" id="hero-image">
     </div>
 
-    <!-- ===== TRUSTED BY ===== -->
-    <section class="trusted-section">
-        <p class="trusted-label">Trusted by teams at</p>
-        <div class="trusted-logos">
-            <img src="https://logo.clearbit.com/google.com" alt="Google" title="Google">
-            <img src="https://logo.clearbit.com/microsoft.com" alt="Microsoft" title="Microsoft">
-            <img src="https://logo.clearbit.com/amazon.com" alt="Amazon" title="Amazon">
-            <img src="https://logo.clearbit.com/meta.com" alt="Meta" title="Meta">
-            <img src="https://logo.clearbit.com/spotify.com" alt="Spotify" title="Spotify">
-            <img src="https://logo.clearbit.com/shopify.com" alt="Shopify" title="Shopify">
-        </div>
-    </section>
-
     <!-- ===== FEATURES ===== -->
     <section id="features">
         <h2>Secure your dream Job with our</h2>
